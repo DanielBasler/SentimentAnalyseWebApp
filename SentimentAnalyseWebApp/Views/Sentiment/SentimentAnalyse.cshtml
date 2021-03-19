@@ -1,0 +1,32 @@
+﻿@model SentimentAnalyseWebAppML.Model.ModelInput
+
+@{ ViewData["Title"] = "Sentiment-Analyse"; }
+<h2>Sentiment-Analyse with ASP.NET Core Web-App</h2>
+<hr />
+@{ var result = ViewBag.Result; }
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="SentimentAnalyse">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Col0" class="control-label"></label>
+                <input asp-for="Col0" class="form-control" />
+                <span asp-validation-for="Col0" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Check" class="btn btn-default" />
+            </div>
+        </form>
+    </div>
+    <div class="col-md-offset-4 col-md-4">
+   @if (result != null)
+        {
+            <h4>Result</h4>
+            <h4>Predection: @result.Prediction</h4>
+            <h4>Score: @result.Score[0]</h4>
+        }
+
+    </div>
+</div>
+
+
